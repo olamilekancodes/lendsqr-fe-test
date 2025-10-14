@@ -1,9 +1,7 @@
+import Layout from "./components/Layout";
+
 function App() {
-  return (
-    <div>
-      <p>Lendsqr</p>
-    </div>
-  );
+  return <Layout />;
 }
 
 export default App;

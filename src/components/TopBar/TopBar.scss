@@ -1,0 +1,102 @@
+@use "../../styles/variables" as var;
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  .logo {
+    width: 9.05rem;
+    height: 1.875rem;
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    width: 25rem;
+    height: 2.5rem;
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      border: 1px solid #d3d9e5;
+      width: 100%;
+      height: 100%;
+
+      input {
+        background: none;
+        border: none;
+        outline: none;
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        color: #878fa4;
+      }
+    }
+
+    .search-icon {
+      background-color: var.$secondary-color;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      padding: 0.5rem;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      height: 100%;
+      width: 5rem;
+      justify-content: center;
+      font-size: 5px;
+      &:hover {
+        background-color: darken(var.$secondary-color, 10%);
+      }
+      transition: color 0.3s;
+    }
+  }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .docs-button {
+      background: none;
+      border: none;
+      color: var.$primary-color;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.3s;
+      font-weight: 400;
+
+      &:hover {
+        color: darken(var.$primary-color, 20%);
+      }
+    }
+
+    .bell-icon {
+      cursor: pointer;
+      &:hover {
+        color: darken(var.$primary-color, 20%);
+      }
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      .username {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+      &:hover {
+        color: darken(var.$primary-color, 20%);
+      }
+    }
+  }
+}
