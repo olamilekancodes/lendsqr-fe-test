@@ -1,5 +1,5 @@
 import "./Layout.scss";
-// import Sidebar from "../SideBar";
+import Sidebar from "../SideBar";
 import Topbar from "../TopBar";
 
 interface LayoutProps {
@@ -9,11 +9,12 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="layout">
-      {/* <Sidebar /> */}
-      <div className="layout-content">
-        <Topbar />
+      <Topbar />
+      <Sidebar />
+      {/* <div className="layout-body">
+      
         <main className="page-content">{children}</main>
-      </div>
+      </div> */}
     </div>
   );
 };
