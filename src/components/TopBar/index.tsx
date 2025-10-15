@@ -1,6 +1,7 @@
 import "./Topbar.scss";
 import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Bell, ChevronDown } from "lucide-react";
 
 import logo from "../../assets/images/logo.png";
 import Avatar from "../../shared/Avatar";
@@ -21,7 +22,12 @@ const Topbar = () => {
 
       <div className="topbar-right">
         <button className="docs-button">Docs</button>
-        <Avatar name="Jane Smith" size={40} />
+        <Bell size={15} className=" bell-icon" />
+        <div className="avatar-container">
+          <Avatar name="Jane Smith" size={40} />
+          <p>Jane</p>
+          <ChevronDown size={15} />
+        </div>
       </div>
     </header>
   );
