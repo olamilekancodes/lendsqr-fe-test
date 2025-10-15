@@ -1,9 +1,11 @@
+import { ChevronDown } from "lucide-react";
+
 import "./SideBar.scss";
 import briefcase from "../../assets/icons/nav/briefcase.png";
 import home from "../../assets/icons/nav/home.png";
 import loan from "../../assets/icons/nav/loan.png";
 
-const customerNavItems = [
+const navSections = [
   {
     title: "customers",
     links: [
@@ -17,9 +19,6 @@ const customerNavItems = [
       { name: "Karma", icon: home },
     ],
   },
-];
-
-const businessNavItems = [
   {
     title: "businesses",
     links: [
@@ -34,13 +33,10 @@ const businessNavItems = [
       { name: "Reports", icon: home },
     ],
   },
-];
-
-const settingsNavItems = [
   {
     title: "settings",
     links: [
-      { name: "Prefrences", icon: briefcase },
+      { name: "Preferences", icon: briefcase },
       { name: "Fees and Pricing", icon: home },
       { name: "Audit Logs", icon: loan },
     ],
@@ -50,67 +46,42 @@ const settingsNavItems = [
 const Sidebar = () => {
   return (
     <aside className="sidebar">
+      <button className="btn">
+        <img src={briefcase} alt="switch organization icon" />
+        Switch Organization
+        <ChevronDown size={15} />
+      </button>
       <nav>
-        <div>
-          {customerNavItems.map((item, index) => (
-            <div key={index} className="nav-section">
-              <p className="section-title">{item.title.toUpperCase()}</p>
-              <ul>
-                {item.links.map((link, index) => (
-                  <li key={index} className="nav-link active">
-                    <img
-                      src={link.icon}
-                      alt={`${link.name} icon`}
-                      className="link-icon"
-                    />
-                    {link.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        <p className="nav-link">
+          <img src={briefcase} alt="switch organization icon" />
+          Dashboard
+        </p>
 
-        <div>
-          {businessNavItems.map((item, index) => (
-            <div key={index} className="nav-section">
-              <p className="section-title">{item.title.toUpperCase()}</p>
-              <ul>
-                {item.links.map((link, index) => (
-                  <li key={index} className="nav-link active">
-                    <img
-                      src={link.icon}
-                      alt={`${link.name} icon`}
-                      className="link-icon"
-                    />
-                    {link.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div>
-          {settingsNavItems.map((item, index) => (
-            <div key={index} className="nav-section">
-              <p className="section-title">{item.title.toUpperCase()}</p>
-              <ul>
-                {item.links.map((link, index) => (
-                  <li key={index} className="nav-link active">
-                    <img
-                      src={link.icon}
-                      alt={`${link.name} icon`}
-                      className="link-icon"
-                    />
-                    {link.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        {navSections.map((section, index) => (
+          <div key={index} className="nav-section">
+            <p className="section-title">{section.title.toUpperCase()}</p>
+            <ul>
+              {section.links.map((link, idx) => (
+                <li key={idx} className="nav-link">
+                  <img
+                    src={link.icon}
+                    alt={`${link.name} icon`}
+                    className="link-icon"
+                  />
+                  {link.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </nav>
+
+      <span className="divider"></span>
+
+      <button className="btn">
+        <img src={briefcase} alt="switch organization icon" />
+        Logout
+      </button>
     </aside>
   );
 };

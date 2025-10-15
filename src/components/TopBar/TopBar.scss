@@ -116,14 +116,14 @@
       @include mixin.fluid-text(1rem, 0.875rem);
       font-weight: 400;
       &:hover {
-        color: color.adjust(var.$primary-color, $lightness: -20%);
+        color: color.adjust(var.$primary-color, $lightness: 20%);
       }
     }
 
     .bell-icon {
       cursor: pointer;
       &:hover {
-        color: color.adjust(var.$primary-color, $lightness: -20%);
+        color: color.adjust(var.$primary-color, $lightness: 20%);
       }
     }
 
@@ -138,7 +138,7 @@
         font-weight: 500;
       }
       &:hover {
-        color: color.adjust(var.$primary-color, $lightness: -20%);
+        color: color.adjust(var.$primary-color, $lightness: 20%);
       }
     }
   }
