@@ -1,20 +1,18 @@
 import "./Layout.scss";
 import Sidebar from "../SideBar";
 import Topbar from "../TopBar";
+import { Outlet } from "react-router-dom";
 
-interface LayoutProps {
-  children?: React.ReactNode;
-}
-
-const Layout = ({ children }: LayoutProps) => {
+const Layout = () => {
   return (
     <div className="layout">
       <Topbar />
-      <Sidebar />
-      {/* <div className="layout-body">
-      
-        <main className="page-content">{children}</main>
-      </div> */}
+      <div className="layout-body">
+        <Sidebar />
+        <main className="page-content">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 };

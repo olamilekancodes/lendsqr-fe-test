@@ -1,6 +1,6 @@
 import "./Topbar.scss";
 import { Search } from "lucide-react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Bell, Menu } from "lucide-react";
 
 import logo from "../../assets/images/logo.png";
@@ -13,10 +13,10 @@ const Topbar = () => {
     <header className="topbar">
       <div className="topbar-left">
         <Menu size={20} className="menu-icon" />
-        <Link to="/">
+        <NavLink to="/">
           <img src={mobileLogo} alt="Lendsqr Logo" className="mobile-logo" />
           <img src={logo} alt="Lendsqr Logo" className="logo" />
-        </Link>
+        </NavLink>
       </div>
 
       <div className="search-container">

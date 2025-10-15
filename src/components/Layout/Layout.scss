@@ -10,16 +10,16 @@
 
 .layout-body {
   display: flex;
-  flex: 1; // This makes the body take up all remaining vertical space
-  overflow: hidden; // Prevents the whole page from scrolling when the content does
-}
+  flex: 1;
+  overflow: hidden;
 
-.page-content {
-  flex: 1; // This makes the main content take up all remaining horizontal space
-  overflow-y: auto; // Allows only the main content to scroll
-  padding: 2rem;
+  .page-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
 
-  @include mixin.respond(lg) {
-    padding: 3rem 4rem;
+    @include mixin.respond(lg) {
+      padding: 3rem 4rem;
+    }
   }
 }

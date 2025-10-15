@@ -7,13 +7,32 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   color: #fff;
-  display: flex;
+  display: none;
   flex-direction: column;
   height: 100vh;
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding-top: 2rem;
+
+  @include mixin.respond(md) {
+    display: flex;
+  }
+
+  .logo-container {
+    display: flex;
+    padding: 0 1.5rem;
+    margin-bottom: 1.5rem;
+
+    .logo {
+      width: 9.05rem;
+      height: auto;
+    }
+
+    @include mixin.respond(md) {
+      display: none;
+    }
+  }
 
   .btn {
     display: flex;
@@ -73,7 +92,8 @@
       transition: opacity 0.2s ease;
     }
 
-    &:hover {
+    &:hover,
+    &.active {
       background-color: color.adjust(var.$secondary-color, $lightness: 44%);
       color: #2d4c8a;
 
@@ -128,7 +148,8 @@
         transition: opacity 0.2s ease;
       }
 
-      &:hover {
+      &:hover,
+      &.active {
         background-color: color.adjust(var.$secondary-color, $lightness: 44%);
         color: #2d4c8a;
 
