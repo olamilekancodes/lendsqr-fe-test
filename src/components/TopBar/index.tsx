@@ -1,23 +1,30 @@
 import "./Topbar.scss";
 import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Bell, ChevronDown } from "lucide-react";
+import { Bell, ChevronDown, Menu } from "lucide-react";
 
 import logo from "../../assets/images/logo.png";
+import mobileLogo from "../../assets/images/mobile-logo.png";
 import Avatar from "../../shared/Avatar";
 
 const Topbar = () => {
   return (
     <header className="topbar">
-      <Link to="/" className="logo-link">
-        <img src={logo} alt="Lendsqr Logo" className="logo" />
-      </Link>
+      <div className="topbar-left">
+        <Menu size={20} className="menu-icon" />
+        <Link to="/">
+          <img src={mobileLogo} alt="Lendsqr Logo" className="mobile-logo" />
+          <img src={logo} alt="Lendsqr Logo" className="logo" />
+        </Link>
+      </div>
 
       <div className="search-container">
         <div className="search-bar">
           <input type="text" placeholder="Search for anything" />
         </div>
-        <Search size={2} className="search-icon" />
+        <button className="search-button">
+          <Search size={15} className="search-icon" />
+        </button>
       </div>
 
       <div className="topbar-right">

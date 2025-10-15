@@ -1,3 +1,28 @@
+@use "sass:map";
+@use "sass:math";
+
+$breakpoints: (
+  "xs": 0,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+);
+
+@mixin respond($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    $size: map.get($breakpoints, $breakpoint);
+
+    @if $size != 0 {
+      @media (min-width: $size) {
+        @content;
+      }
+    } @else {
+      @content;
+    }
+  }
+}
+
 @mixin card {
   background: #fff;
   border-radius: 10px;
@@ -5,18 +30,19 @@
   padding: 1rem;
 }
 
-$breakpoints: (
-  "mobile": 480px,
-  "tablet": 768px,
-  "desktop": 1024px,
-);
+@mixin fluid-text($max-size, $min-size) {
+  $min-vw: 375px;
+  $max-vw: 1200px;
 
-@mixin respond($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (max-width: map-get($breakpoints, $breakpoint)) {
-      @content;
-    }
-  } @else {
-    @warn "Breakpoint `#{$breakpoint}` not found. Available breakpoints: #{map-keys($breakpoints)}.";
-  }
+  $max-size-no-unit: math.div($max-size, $max-size * 0 + 1);
+  $min-size-no-unit: math.div($min-size, $min-size * 0 + 1);
+
+  $fluid-value: calc(
+    #{$min-size} + (#{$max-size-no-unit} - #{$min-size-no-unit}) * (
+        100vw - #{$min-vw}
+      ) / (math.div($max-vw, $max-vw * 0 + 1) -
+          math.div($min-vw, $min-vw * 0 + 1))
+  );
+
+  font-size: clamp(#{$min-size}, #{$fluid-value}, #{$max-size});
 }
