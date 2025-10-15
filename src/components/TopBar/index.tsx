@@ -1,11 +1,12 @@
 import "./Topbar.scss";
 import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Bell, ChevronDown, Menu } from "lucide-react";
+import { Bell, Menu } from "lucide-react";
 
 import logo from "../../assets/images/logo.png";
 import mobileLogo from "../../assets/images/mobile-logo.png";
 import Avatar from "../../shared/Avatar";
+import downArrow from "../../assets/icons/topbar/arrow-down.png";
 
 const Topbar = () => {
   return (
@@ -29,11 +30,11 @@ const Topbar = () => {
 
       <div className="topbar-right">
         <button className="docs-button">Docs</button>
-        <Bell size={15} className=" bell-icon" />
+        <Bell size={20} className=" bell-icon" />
         <div className="avatar-container">
           <Avatar name="Jane Smith" size={40} />
           <p>Jane</p>
-          <ChevronDown size={15} />
+          <img src={downArrow} alt="arrow icon" />
         </div>
       </div>
     </header>

@@ -137,8 +137,14 @@
         @include mixin.fluid-text(1rem, 0.875rem);
         font-weight: 500;
       }
+
       &:hover {
         color: color.adjust(var.$primary-color, $lightness: 20%);
+
+        img {
+          filter: brightness(0) saturate(100%) invert(29%) sepia(72%)
+            saturate(749%) hue-rotate(210deg) brightness(95%) contrast(91%);
+        }
       }
     }
   }

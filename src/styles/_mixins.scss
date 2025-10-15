@@ -30,19 +30,13 @@ $breakpoints: (
   padding: 1rem;
 }
 
-@mixin fluid-text($max-size, $min-size) {
-  $min-vw: 375px;
-  $max-vw: 1200px;
-
-  $max-size-no-unit: math.div($max-size, $max-size * 0 + 1);
-  $min-size-no-unit: math.div($min-size, $min-size * 0 + 1);
-
-  $fluid-value: calc(
-    #{$min-size} + (#{$max-size-no-unit} - #{$min-size-no-unit}) * (
-        100vw - #{$min-vw}
-      ) / (math.div($max-vw, $max-vw * 0 + 1) -
-          math.div($min-vw, $min-vw * 0 + 1))
+@mixin fluid-text($max-size, $min-size, $min-vw: 375px, $max-vw: 1200px) {
+  font-size: clamp(
+    #{$min-size},
+    calc(
+      #{$min-size} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-vw}) /
+            (#{$max-vw} - #{$min-vw}))
+    ),
+    #{$max-size}
   );
-
-  font-size: clamp(#{$min-size}, #{$fluid-value}, #{$max-size});
 }
