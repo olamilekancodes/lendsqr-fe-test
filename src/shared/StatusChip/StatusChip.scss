@@ -1,0 +1,22 @@
+@use "sass:map";
+@use "sass:color";
+@use "../../styles/variables" as var;
+
+$status-colors: map.get(var.$status-colors, "active");
+
+.status-chip {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  cursor: default;
+}
+
+@each $key, $value in var.$status-colors {
+  .status-#{$key} {
+    color: $value;
+    background-color: color.scale($value, $lightness: 90%);
+  }
+}

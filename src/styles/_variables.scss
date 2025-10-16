@@ -4,3 +4,10 @@ $background-color: #fbfbfb;
 $text-color: #545f7d;
 
 $font-family: "Work Sans", sans-serif;
+
+$status-colors: (
+  "active": #67d987,
+  "inactive": #545f7d,
+  "pending": #e9b200,
+  "blacklisted": #e61146,
+);

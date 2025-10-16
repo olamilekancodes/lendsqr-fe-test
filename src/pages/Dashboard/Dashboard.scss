@@ -22,7 +22,7 @@
   flex-direction: column;
   gap: 1rem;
   padding: 2rem 2.5rem 2.5rem;
-  min-width: 300px;
+  min-width: 19rem;
 
   @include mixin.respond(md) {
     align-items: start;

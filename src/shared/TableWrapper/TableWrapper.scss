@@ -1,0 +1,60 @@
+@use "../../styles/variables" as var;
+@use "sass:color";
+@use "../../styles/_mixins.scss" as mixin;
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  @include mixin.card;
+  margin-top: 3rem;
+
+  .simple-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: inherit;
+  }
+
+  .th-cell {
+    text-align: left;
+    padding: 12px 6px;
+    background: none;
+    vertical-align: middle;
+    font-size: 0.75rem;
+    font-weight: 600;
+    &.is-sorted {
+      background: #fff;
+    }
+  }
+
+  .th-button {
+    display: flex;
+    align-items: start;
+    gap: 8px;
+    background: none;
+    border: none;
+    font: inherit;
+    text-transform: uppercase;
+    color: inherit;
+    padding: 0;
+
+    .filter-icon {
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+      cursor: pointer;
+    }
+
+    &:hover .filter-icon {
+      opacity: 1;
+    }
+  }
+
+  .simple-table td {
+    padding: 15px 6px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+  }
+}
+
+.simple-table tr:last-child td {
+  border-bottom: none;
+}
