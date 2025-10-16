@@ -13,13 +13,14 @@ import StyledTd from "../../shared/StyledTableCell";
 import { StatusChip } from "./../../shared/StatusChip/index";
 import { formatDateTime } from "../../shared/utils/dateformatter";
 import { CustomPagination } from "../../shared/Pagination";
+import { getUsers } from "../../api/users";
 
 interface dataType {
   id: number;
   organization: string;
   username: string;
   email: string;
-  phone: string;
+  phone_number: string;
   date_joined: string;
   status: string;
 }
@@ -33,17 +34,17 @@ const cardContents = [
   {
     title: "active users",
     icon: activeUser,
-    number: "2,453",
+    number: "1,023",
   },
   {
     title: "user with laons",
     icon: userLoan,
-    number: "2,453",
+    number: "278",
   },
   {
     title: "user with savings",
     icon: userSavings,
-    number: "2,453",
+    number: "1,892",
   },
 ];
 
@@ -57,118 +58,9 @@ const headCells = [
   { id: "actions", label: "" },
 ];
 
-const data = [
-  {
-    id: 1,
-    organization: "Lendsqr",
-    username: "lendsqr",
-    email: "oo@gmail.com",
-    phone: "07012345678",
-    date_joined: "2020-09-20 10:00:00",
-    status: "active",
-  },
-  {
-    id: 2,
-    organization: "Lendsqr",
-    username: "lendsqr",
-    email: "oo@gmail.com",
-    phone: "07012345678",
-    date_joined: "2020-09-20 10:00:00",
-    status: "Inactive",
-  },
-  {
-    id: 3,
-    organization: "Lendsqr",
-    username: "lendsqr",
-    email: "oo@gmail.com",
-    phone: "07012345678",
-    date_joined: "2020-09-20 10:00:00",
-    status: "Blacklisted",
-  },
-  {
-    id: 4,
-    organization: "Lendsqr",
-    username: "lendsqr",
-    email: "oo@gmail.com",
-    phone: "07012345678",
-    date_joined: "2020-09-20 10:00:00",
-    status: "pending",
-  },
-  {
-    id: 5,
-    organization: "Lendsqr",
-    username: "lendsqr",
-    email: "oo@gmail.com",
-    phone: "07012345678",
-    date_joined: "2020-09-20 10:00:00",
-    status: "active",
-  },
-  {
-    id: 6,
-    organization: "Lendsqr",
-    username: "lendsqr",
-    email: "oo@gmail.com",
-    phone: "07012345678",
-    date_joined: "2020-09-20 10:00:00",
-    status: "active",
-  },
-  {
-    id: 7,
-    organization: "Lendsqr",
-    username: "lendsqr",
-    email: "oo@gmail.com",
-    phone: "07012345678",
-    date_joined: "2020-09-20 10:00:00",
-    status: "active",
-  },
-  {
-    id: 8,
-    organization: "Lendsqr",
-    username: "lendsqr",
-    email: "oo@gmail.com",
-    phone: "07012345678",
-    date_joined: "2020-09-20 10:00:00",
-    status: "active",
-  },
-  {
-    id: 9,
-    organization: "Lendsqr",
-    username: "lendsqr",
-    email: "oo@gmail.com",
-    phone: "07012345678",
-    date_joined: "2020-09-20 10:00:00",
-    status: "active",
-  },
-  {
-    id: 10,
-    organization: "Lendsqr",
-    username: "lendsqr",
-    email: "oo@gmail.com",
-    phone: "07012345678",
-    date_joined: "2020-09-20 10:00:00",
-    status: "active",
-  },
-  {
-    id: 11,
-    organization: "Lendsqr",
-    username: "lendsqr",
-    email: "oo@gmail.com",
-    phone: "07012345678",
-    date_joined: "2020-09-20 10:00:00",
-    status: "active",
-  },
-  {
-    id: 12,
-    organization: "Lendsqr",
-    username: "lendsqr",
-    email: "oo@gmail.com",
-    phone: "07012345678",
-    date_joined: "2020-09-20 10:00:00",
-    status: "active",
-  },
-];
-
 const Users = () => {
+  const data = getUsers();
+
   const {
     order,
     orderBy,
@@ -177,13 +69,12 @@ const Users = () => {
     current_page,
     setCurrentPage,
     handleRequestSort,
+    setItemPerPage,
+    items_per_page,
   } = usePagination({
     data: data,
-    items_per_page: 10,
     order_control: "id",
   });
-
-  console.log({ current_data, total_pages, current_page });
 
   return (
     <>
@@ -211,7 +102,7 @@ const Users = () => {
               username,
               date_joined,
               email,
-              phone,
+              phone_number,
               status,
             } = data;
             return (
@@ -219,7 +110,7 @@ const Users = () => {
                 <StyledTd>{organization}</StyledTd>
                 <StyledTd>{username}</StyledTd>
                 <StyledTd>{email}</StyledTd>
-                <StyledTd>{phone}</StyledTd>
+                <StyledTd>{phone_number}</StyledTd>
                 <StyledTd>
                   {date_joined && formatDateTime(date_joined)}
                 </StyledTd>
@@ -234,7 +125,13 @@ const Users = () => {
           }
         )}
       </SimpleTableWrapper>
-      <CustomPagination />
+      <CustomPagination
+        current_page={current_page}
+        total_pages={total_pages}
+        items_per_page={items_per_page}
+        setCurrentPage={setCurrentPage}
+        setItemPerPage={setItemPerPage}
+      />
     </>
   );
 };

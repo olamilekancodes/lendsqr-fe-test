@@ -1,7 +1,98 @@
+@use "../../styles/variables" as var;
+@use "sass:color";
+@use "../../styles/_mixins.scss" as mixin;
+
 .pagination-container {
   display: flex;
   justify-content: space-between;
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 5rem;
   align-items: center;
-  overflow-x: auto;
+
+  .pagination-info {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    gap: 0.5rem;
+
+    span {
+      font-weight: 400;
+      color: var.$text-color;
+    }
+
+    .items-dropdown {
+      margin: 0 3px;
+      padding: 6px 10px;
+      border: none !important;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      background-color: color.adjust(var.$text-color, $lightness: 50%);
+      cursor: pointer;
+      color: var.$primary-color;
+      font-weight: 500;
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .nav-btn {
+      border: none;
+      background-color: color.adjust(var.$text-color, $lightness: 50%);
+      cursor: pointer;
+      padding: 0.3rem;
+      border-radius: 6px;
+      color: var.$primary-color;
+      font-weight: 500;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background-color: color.adjust(var.$primary-color, $lightness: 50%);
+      }
+
+      &.active {
+        background-color: color.adjust(var.$primary-color, $lightness: 50%);
+
+        &:hover {
+          background-color: color.adjust(var.$primary-color, $lightness: 50%);
+        }
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: default;
+
+        &:hover {
+          background-color: color.adjust(var.$primary-color, $lightness: 61%);
+        }
+      }
+    }
+
+    .page-btn {
+      background-color: none !important;
+      color: color.adjust(var.$text-color, $lightness: 40%);
+      font-weight: 500;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+
+      &:hover {
+        color: var.$text-color;
+      }
+
+      &.active {
+        color: var.$text-color;
+
+        &:hover {
+          color: color.adjust(var.$text-color, $lightness: 20%);
+        }
+      }
+    }
+  }
 }

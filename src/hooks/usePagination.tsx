@@ -2,16 +2,12 @@ import { useState } from "react";
 
 interface PaginationProps<T> {
   data: T[];
-  items_per_page?: number;
   order_control: keyof T;
 }
 
-function usePagination<T>({
-  data,
-  items_per_page = 10,
-  order_control,
-}: PaginationProps<T>) {
+function usePagination<T>({ data, order_control }: PaginationProps<T>) {
   const [current_page, setCurrentPage] = useState(1);
+  const [items_per_page, setItemPerPage] = useState(10);
   const [order, setOrder] = useState<"asc" | "desc">("asc");
   const [orderBy, setOrderBy] = useState<keyof T>(order_control);
 
@@ -45,6 +41,8 @@ function usePagination<T>({
     current_page,
     setCurrentPage,
     handleRequestSort,
+    setItemPerPage,
+    items_per_page,
   };
 }
 
