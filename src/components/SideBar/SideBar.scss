@@ -7,17 +7,10 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   color: #fff;
-  display: none;
+  display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
   padding-top: 2rem;
-
-  @include mixin.respond(md) {
-    display: flex;
-  }
 
   .logo-container {
     display: flex;
@@ -29,9 +22,15 @@
       height: auto;
     }
 
-    @include mixin.respond(md) {
+    @include mixin.respond(lg) {
       display: none;
     }
+  }
+
+  .sidebar-content {
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .btn {
@@ -181,6 +180,6 @@
   }
 }
 
-.sidebar::-webkit-scrollbar {
+.sidebar-content ::-webkit-scrollbar {
   display: none;
 }

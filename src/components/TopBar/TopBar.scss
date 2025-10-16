@@ -19,7 +19,7 @@
       display: block;
       cursor: pointer;
 
-      @include mixin.respond(md) {
+      @include mixin.respond(lg) {
         display: none;
       }
     }
@@ -29,7 +29,7 @@
       height: 1.875rem;
       display: none;
 
-      @include mixin.respond(md) {
+      @include mixin.respond(lg) {
         display: block;
       }
     }
@@ -37,7 +37,7 @@
     .mobile-logo {
       display: block;
 
-      @include mixin.respond(md) {
+      @include mixin.respond(lg) {
         display: none;
       }
     }

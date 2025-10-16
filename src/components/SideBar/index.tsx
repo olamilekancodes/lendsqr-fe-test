@@ -26,6 +26,10 @@ import tire from "../../assets/icons/nav/settings/tire.png";
 import signOut from "../../assets/icons/nav/sign-out.png";
 import logo from "../../assets/images/logo.png";
 
+interface SideBarProps {
+  closeNavAction?: () => void;
+}
+
 const navSections = [
   {
     title: "customers",
@@ -65,7 +69,7 @@ const navSections = [
   },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ closeNavAction }: SideBarProps) => {
   return (
     <aside className="sidebar">
       <div className="logo-container">
@@ -73,54 +77,57 @@ const Sidebar = () => {
           <img src={logo} alt="Lendsqr Logo" className="logo" />
         </NavLink>
       </div>
+      <div className="sidebar-content">
+        <button className="btn">
+          <img src={briefcase} alt="switch organization icon" />
+          Switch Organization
+          <ChevronDown size={15} />
+        </button>
+        <nav>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              "dashboard-link" + (isActive ? " active" : "")
+            }
+            onClick={closeNavAction}
+          >
+            <img src={home} alt="dashboard icon" />
+            Dashboard
+          </NavLink>
 
-      <button className="btn">
-        <img src={briefcase} alt="switch organization icon" />
-        Switch Organization
-        <ChevronDown size={15} />
-      </button>
-      <nav>
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            "dashboard-link" + (isActive ? " active" : "")
-          }
-        >
-          <img src={home} alt="dashboard icon" />
-          Dashboard
-        </NavLink>
+          {navSections.map((section, index) => (
+            <div key={index} className="nav-section">
+              <p className="section-title">{section.title.toUpperCase()}</p>
+              {section.links.map((link, idx) => (
+                <NavLink
+                  to={link.url}
+                  key={idx}
+                  className={({ isActive }) =>
+                    "nav-link" + (isActive ? " active" : "")
+                  }
+                  onClick={closeNavAction}
+                >
+                  <img
+                    src={link.icon}
+                    alt={`${link.name} icon`}
+                    className="link-icon"
+                  />
+                  {link.name}
+                </NavLink>
+              ))}
+            </div>
+          ))}
+        </nav>
 
-        {navSections.map((section, index) => (
-          <div key={index} className="nav-section">
-            <p className="section-title">{section.title.toUpperCase()}</p>
-            {section.links.map((link, idx) => (
-              <NavLink
-                to={link.url}
-                key={idx}
-                className={({ isActive }) =>
-                  "nav-link" + (isActive ? " active" : "")
-                }
-              >
-                <img
-                  src={link.icon}
-                  alt={`${link.name} icon`}
-                  className="link-icon"
-                />
-                {link.name}
-              </NavLink>
-            ))}
-          </div>
-        ))}
-      </nav>
+        <hr className="divider" />
 
-      <hr className="divider" />
+        <button className="btn">
+          <img src={signOut} alt="logo out icon" onClick={closeNavAction} />
+          Logout
+        </button>
 
-      <button className="btn">
-        <img src={signOut} alt="logo out icon" />
-        Logout
-      </button>
-
-      <span className="version">v1.2.0</span>
+        <span className="version">v1.2.0</span>
+      </div>
     </aside>
   );
 };

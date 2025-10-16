@@ -8,11 +8,19 @@ import mobileLogo from "../../assets/images/mobile-logo.png";
 import Avatar from "../../shared/Avatar";
 import downArrow from "../../assets/icons/topbar/arrow-down.png";
 
-const Topbar = () => {
+interface TopbarProps {
+  setOpenMobileNav: (open: boolean) => void;
+}
+
+const Topbar = ({ setOpenMobileNav }: TopbarProps) => {
   return (
     <header className="topbar">
       <div className="topbar-left">
-        <Menu size={20} className="menu-icon" />
+        <Menu
+          size={20}
+          className="menu-icon"
+          onClick={() => setOpenMobileNav(true)}
+        />
         <NavLink to="/">
           <img src={mobileLogo} alt="Lendsqr Logo" className="mobile-logo" />
           <img src={logo} alt="Lendsqr Logo" className="logo" />
