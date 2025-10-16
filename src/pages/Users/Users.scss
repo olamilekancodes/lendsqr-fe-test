@@ -1,0 +1,36 @@
+@use "../../styles/variables" as var;
+@use "sass:color";
+@use "../../styles/_mixins.scss" as mixin;
+
+.info-card-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-top: 1.5rem;
+}
+
+.info-card {
+  @include mixin.card;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.875rem;
+  padding: 1.5rem 2rem 2rem;
+
+  @include mixin.respond(sm) {
+    align-items: start;
+  }
+}
+
+.info-card-title {
+  text-transform: uppercase;
+  color: var.$text-color;
+  @include mixin.fluid-text(0.875rem, 0.75rem);
+  font-weight: 500;
+}
+
+.info-card-number {
+  color: var.$primary-color;
+  font-weight: 600;
+  @include mixin.fluid-text(1.5rem, 1.25rem);
+}

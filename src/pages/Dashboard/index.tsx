@@ -1,13 +1,43 @@
+import activeUser from "../../assets/icons/user/active-user.png";
+import userSavings from "../../assets/icons/user/user-savings.png";
+import userLoan from "../../assets/icons/user/users-loan.png";
+import user from "../../assets/icons/user/users.png";
+import "./Dashboard.scss";
+
+const cardContents = [
+  {
+    title: "users",
+    icon: user,
+    number: "2,453",
+  },
+  {
+    title: "active users",
+    icon: activeUser,
+    number: "2,453",
+  },
+  {
+    title: "user with laons",
+    icon: userLoan,
+    number: "2,453",
+  },
+  {
+    title: "user with savings",
+    icon: userSavings,
+    number: "2,453",
+  },
+];
+
 const Dashboard = () => {
   return (
-    <h1>
-      type and scrambled it to make a type specimen book. It has survived not
-      only five centuries, but also the leap into electronic typesetting,
-      remaining essentially unchanged. It was popularised in the 1960s with the
-      release of Letraset sheets containing Lorem Ipsum passages, and more
-      recently with desktop publishing software like Aldus PageMaker including
-      versions of Lorem Ipsum.
-    </h1>
+    <div className="grid-card">
+      {cardContents.map((card, index) => (
+        <div key={index} className="card">
+          <img src={card.icon} alt={`${card.title} icon`} />
+          <p className="card-title">{card.title}</p>
+          <h2 className="card-number">{card.number}</h2>
+        </div>
+      ))}
+    </div>
   );
 };
 
