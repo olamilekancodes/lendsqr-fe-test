@@ -1,19 +1,19 @@
 import { PageTitle } from "../../shared/PageTitle";
-import { EllipsisVertical } from "lucide-react";
+import { useState } from "react";
+import { Eye, UserX, UserRoundCheck } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-import activeUser from "../../assets/icons/user/active-user.png";
-import userSavings from "../../assets/icons/user/user-savings.png";
-import userLoan from "../../assets/icons/user/users-loan.png";
-import user from "../../assets/icons/user/users.png";
 import "./Users.scss";
 import usePagination from "../../hooks/usePagination";
 import SimpleTableWrapper from "../../shared/TableWrapper";
 import { getComparator, stableSort } from "../../shared/utils/sort";
 import StyledTd from "../../shared/StyledTableCell";
 import { StatusChip } from "./../../shared/StatusChip/index";
-import { formatDateTime } from "../../shared/utils/dateformatter";
+import { formatDate } from "../../shared/utils/dateformatter";
 import { CustomPagination } from "../../shared/Pagination";
 import { getUsers } from "../../api/users";
+import ActionMenu from "../../shared/ActionMenu";
+import { getCardContent } from "../../api/card";
 
 interface dataType {
   id: number;
@@ -24,29 +24,6 @@ interface dataType {
   date_joined: string;
   status: string;
 }
-
-const cardContents = [
-  {
-    title: "users",
-    icon: user,
-    number: "2,453",
-  },
-  {
-    title: "active users",
-    icon: activeUser,
-    number: "1,023",
-  },
-  {
-    title: "user with laons",
-    icon: userLoan,
-    number: "278",
-  },
-  {
-    title: "user with savings",
-    icon: userSavings,
-    number: "1,892",
-  },
-];
 
 const headCells = [
   { id: "organization", label: "Organization" },
@@ -60,6 +37,13 @@ const headCells = [
 
 const Users = () => {
   const data = getUsers();
+  const cardContents = getCardContent();
+
+  const navigate = useNavigate();
+
+  const [selectedUser, setSelectedUser] = useState<dataType | null>(null);
+
+  console.log(selectedUser);
 
   const {
     order,
@@ -111,14 +95,41 @@ const Users = () => {
                 <StyledTd>{username}</StyledTd>
                 <StyledTd>{email}</StyledTd>
                 <StyledTd>{phone_number}</StyledTd>
-                <StyledTd>
-                  {date_joined && formatDateTime(date_joined)}
-                </StyledTd>
+                <StyledTd>{date_joined && formatDate(date_joined)}</StyledTd>
                 <StyledTd>
                   <StatusChip status={status} />
                 </StyledTd>
                 <StyledTd className="actions-cell">
-                  <EllipsisVertical size={18} />
+                  <ActionMenu
+                    toggleAction={() => setSelectedUser(data)}
+                    items={[
+                      {
+                        label: (
+                          <div className="menu-item-content">
+                            <Eye size={16} />
+                            <span>View Details</span>
+                          </div>
+                        ),
+                        onClick: () => navigate(`/users/${id}`),
+                      },
+                      {
+                        label: (
+                          <div className="menu-item-content">
+                            <UserX size={16} />
+                            <span>Blacklist User</span>
+                          </div>
+                        ),
+                      },
+                      {
+                        label: (
+                          <div className="menu-item-content">
+                            <UserRoundCheck size={16} />
+                            <span>Activate User</span>
+                          </div>
+                        ),
+                      },
+                    ]}
+                  />
                 </StyledTd>
               </tr>
             );
