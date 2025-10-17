@@ -1,0 +1,121 @@
+@use "../../../styles/variables" as var;
+@use "sass:color";
+@use "../../../styles/_mixins.scss" as mixin;
+
+.user-details-container {
+  margin: 2rem 0;
+
+  .user-button {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+
+    @include mixin.respond(sm) {
+      flex-direction: row;
+      margin-top: 0;
+    }
+  }
+
+  .basic-info-container {
+    @include mixin.card;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .user-basic-info {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 1rem;
+
+      @include mixin.respond(md) {
+        flex-direction: row;
+      }
+
+      .avatar-details {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        padding: 2rem 0;
+        @include mixin.respond(md) {
+          padding: 1rem;
+        }
+      }
+
+      .avatar-name {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        color: var.$text-color;
+
+        .name {
+          @include mixin.fluid-text(1.375rem, 1.125rem);
+          font-weight: 500;
+        }
+        .tag {
+          @include mixin.fluid-text(0.875rem, 0.75rem);
+          font-weight: 400;
+        }
+      }
+
+      .teir-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+
+        .teir {
+          @include mixin.fluid-text(1rem, 0.875rem);
+          font-weight: 500;
+        }
+
+        .icon {
+          color: #e9b200;
+        }
+      }
+
+      .amount-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 2rem 0;
+
+        @include mixin.respond(md) {
+          padding: 0;
+        }
+
+        .amount {
+          @include mixin.fluid-text(1.4rem, 1.2rem);
+          font-weight: 500;
+        }
+
+        .bank-details {
+          font-size: 0.8rem;
+          font-weight: 400;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+
+  .divider {
+    width: 1px;
+    background-color: color.adjust(var.$text-color, $lightness: 40%);
+    margin: 1rem 0;
+    align-self: stretch;
+  }
+
+  .hori {
+    display: block;
+    border: none;
+    border-bottom: 1px solid color.adjust(var.$text-color, $lightness: 40%);
+    width: 100%;
+
+    @include mixin.respond(md) {
+      display: none;
+    }
+  }
+}

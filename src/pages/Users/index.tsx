@@ -61,7 +61,7 @@ const Users = () => {
   });
 
   return (
-    <>
+    <div className="users">
       <PageTitle title="Users" />
       <div className="info-card-grid">
         {cardContents.map((card, index) => (
@@ -143,7 +143,7 @@ const Users = () => {
         setCurrentPage={setCurrentPage}
         setItemPerPage={setItemPerPage}
       />
-    </>
+    </div>
   );
 };
 

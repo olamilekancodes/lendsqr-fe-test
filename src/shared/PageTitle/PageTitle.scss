@@ -8,7 +8,7 @@
   gap: 2rem;
 }
 
-p {
+.back-link {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -23,13 +23,19 @@ p {
 .title-container {
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: space-between;
   margin-bottom: 2rem;
+
+  @include mixin.respond(sm) {
+    flex-direction: row;
+  }
 }
 
 h2 {
-  font-size: 24px;
+  @include mixin.fluid-text(1.5rem, 1.2rem);
   font-weight: 500;
   color: var.$primary-color;
   @include mixin.fluid-text(1.5rem, 1.25rem);
+  align-self: flex-start;
 }

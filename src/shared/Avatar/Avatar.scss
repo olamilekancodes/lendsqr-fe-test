@@ -1,8 +1,11 @@
+@use "../../styles/variables" as var;
+@use "../../styles/_mixins.scss" as mixin;
+
 .avatar {
   border-radius: 50%;
   overflow: hidden;
-  background-color: #213f7d;
-  color: #fff;
+  background-color: #dbe0ea;
+  color: var.$primary-color;
   display: flex;
   align-items: center;
   justify-content: center;

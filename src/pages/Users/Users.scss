@@ -2,6 +2,10 @@
 @use "sass:color";
 @use "../../styles/_mixins.scss" as mixin;
 
+.users {
+  margin: 2rem 0;
+}
+
 .info-card-grid {
   display: grid;
   gap: 2rem;
