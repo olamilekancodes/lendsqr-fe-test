@@ -25,6 +25,7 @@ import clipboard from "../../assets/icons/nav/settings/clipboard.png";
 import tire from "../../assets/icons/nav/settings/tire.png";
 import signOut from "../../assets/icons/nav/sign-out.png";
 import logo from "../../assets/images/logo.png";
+import { useAuth } from "../../auth/useAuth";
 
 interface SideBarProps {
   closeNavAction?: () => void;
@@ -70,10 +71,11 @@ const navSections = [
 ];
 
 const Sidebar = ({ closeNavAction }: SideBarProps) => {
+  const { logout } = useAuth();
   return (
     <aside className="sidebar">
       <div className="logo-container">
-        <NavLink to="/">
+        <NavLink to="/dashboard">
           <img src={logo} alt="Lendsqr Logo" className="logo" />
         </NavLink>
       </div>
@@ -85,7 +87,7 @@ const Sidebar = ({ closeNavAction }: SideBarProps) => {
         </button>
         <nav>
           <NavLink
-            to="/"
+            to="/dashboard"
             className={({ isActive }) =>
               "dashboard-link" + (isActive ? " active" : "")
             }
@@ -121,8 +123,16 @@ const Sidebar = ({ closeNavAction }: SideBarProps) => {
 
         <hr className="divider" />
 
-        <button className="btn">
-          <img src={signOut} alt="logo out icon" onClick={closeNavAction} />
+        <button
+          className="btn"
+          onClick={() => {
+            logout();
+            if (closeNavAction) {
+              closeNavAction();
+            }
+          }}
+        >
+          <img src={signOut} alt="logo out icon" />
           Logout
         </button>
 

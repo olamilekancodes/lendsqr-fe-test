@@ -22,7 +22,7 @@ const Topbar = ({ setOpenMobileNav }: TopbarProps) => {
           className="menu-icon"
           onClick={() => setOpenMobileNav(true)}
         />
-        <NavLink to="/">
+        <NavLink to="/dashboard">
           <img src={mobileLogo} alt="Lendsqr Logo" className="mobile-logo" />
           <img src={logo} alt="Lendsqr Logo" className="logo" />
         </NavLink>
