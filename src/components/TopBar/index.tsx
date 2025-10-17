@@ -1,12 +1,13 @@
 import "./Topbar.scss";
 import { Search } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { Bell, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
+import { TiArrowSortedDown } from "react-icons/ti";
+import { LiaBell } from "react-icons/lia";
 
 import logo from "../../assets/images/logo.png";
 import mobileLogo from "../../assets/images/mobile-logo.png";
 import Avatar from "../../shared/Avatar";
-import downArrow from "../../assets/icons/topbar/arrow-down.png";
 
 interface TopbarProps {
   setOpenMobileNav: (open: boolean) => void;
@@ -38,11 +39,12 @@ const Topbar = ({ setOpenMobileNav }: TopbarProps) => {
 
       <div className="topbar-right">
         <button className="docs-button">Docs</button>
-        <Bell size={20} className=" bell-icon" />
+        <LiaBell size={20} className=" bell-icon" />
         <div className="avatar-container">
           <Avatar name="Jane Smith" size={40} />
           <p>Jane</p>
-          <img src={downArrow} alt="arrow icon" />
+          {/* <img src={downArrow} alt="arrow icon" /> */}
+          <TiArrowSortedDown size={20} />
         </div>
       </div>
     </header>

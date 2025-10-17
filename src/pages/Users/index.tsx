@@ -43,8 +43,6 @@ const Users = () => {
 
   const [selectedUser, setSelectedUser] = useState<dataType | null>(null);
 
-  console.log(selectedUser);
-
   const {
     order,
     orderBy,
@@ -110,7 +108,7 @@ const Users = () => {
                             <span>View Details</span>
                           </div>
                         ),
-                        onClick: () => navigate(`/users/${id}`),
+                        onClick: () => navigate(`/users/${selectedUser!.id}`),
                       },
                       {
                         label: (
