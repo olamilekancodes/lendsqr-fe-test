@@ -1,0 +1,15 @@
+@use "sass:color";
+@use "../../styles/variables" as var;
+@use "../../styles/_mixins.scss" as mixin;
+
+.value {
+  @include mixin.fluid-text(1rem, 0.875rem);
+  font-weight: 500;
+  color: var.$primary-color;
+}
+
+.title {
+  @include mixin.fluid-text(0.75rem, 0.625rem);
+  font-weight: 400;
+  color: var.$primary-color;
+}

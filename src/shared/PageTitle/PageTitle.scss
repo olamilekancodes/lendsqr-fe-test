@@ -22,14 +22,9 @@
 
 .title-container {
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   margin-bottom: 2rem;
-
-  @include mixin.respond(sm) {
-    flex-direction: row;
-  }
 }
 
 h2 {

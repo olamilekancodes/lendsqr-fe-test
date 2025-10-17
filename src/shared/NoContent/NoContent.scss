@@ -1,0 +1,20 @@
+@use "sass:color";
+@use "../../styles/variables" as var;
+@use "../../styles/_mixins.scss" as mixin;
+
+.no-content-container {
+  display: flex;
+  flex-direction: column;
+  @include mixin.card;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0;
+  padding: 5rem 0;
+  gap: 0.5rem;
+
+  .text {
+    @include mixin.fluid-text(1.25rem, 1rem);
+    font-weight: 500;
+    color: color.adjust(var.$text-color, $lightness: 30%);
+  }
+}

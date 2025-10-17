@@ -1,4 +1,6 @@
+
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 import { getUsers } from "../../../api/users";
 import { EnhancedPageTitle } from "../../../shared/PageTitle";
@@ -7,38 +9,17 @@ import StyledButton from "../../../shared/Button";
 import Avatar from "./../../../shared/Avatar/index";
 import { Rating } from "../../../shared/Rating";
 import { formatAmount } from "../../../shared/utils/amountformatter";
+import ActionMenu from "../../../shared/ActionMenu";
+import Tabs from "../../../shared/Tabs";
+import GeneralDetails from "./components/GeneralInformation";
+import NoContent from "../../../shared/NoContent";
 
 const UserDetails = () => {
   const { id } = useParams<{ id: string }>();
+  const [activeTab, setActiveTab] = useState("general");
 
   const users = getUsers();
   const user = users.find((u) => u.id === Number(id));
-
-  const {
-    username,
-    email,
-    phone_number,
-    organization,
-    first_name,
-    last_name,
-    date_joined,
-    gender,
-    BVN,
-    facebook,
-    instagram,
-    twitter,
-    guarantor_name,
-    guarantor_phone_number,
-    guarantor_email,
-    status,
-    amount,
-    acount,
-    bank,
-    star,
-    tag,
-  } = user || {};
-
-  if (!user) return <p>User not found</p>;
 
   return (
     <div className="user-details-container">
@@ -47,37 +28,76 @@ const UserDetails = () => {
           <StyledButton title="blacklist user" color="#de325d" />
           <StyledButton title="activate user" color="#39cdcc" />
         </div>
+
+        <div className="user-button-dropdown">
+          <ActionMenu
+            toggleAction={() => {}}
+            items={[
+              { label: <span>Blacklist User</span> },
+              { label: <span>Activate User</span> },
+            ]}
+          />
+        </div>
       </EnhancedPageTitle>
 
       <div className="basic-info-container">
         <div className="user-basic-info">
-          <div className="avatar-details">
-            <Avatar name={first_name || ""} size={100} />
-            <div className="avatar-name">
-              <h2 className="name">{username}</h2>
-              <p className="tag">{tag}</p>
-            </div>
-          </div>
+          {!user ? (
+            <p className="text">User not found</p>
+          ) : (
+            <>
+              <div className="avatar-details">
+                <Avatar name={user.first_name || ""} size={100} />
+                <div className="avatar-name">
+                  <h2 className="name">{user.username}</h2>
+                  <p className="tag">{user.tag}</p>
+                </div>
+              </div>
 
-          <hr className="hori" />
-          <div className="divider" />
+              <hr className="mobile-divider" />
+              <div className="divider" />
 
-          <div className="teir-container">
-            <p className="teir">User's Tier</p>
+              <div className="teir-container">
+                <p className="teir">User's Tier</p>
+                <Rating tag={Number(user.star) || 0} />
+              </div>
 
-            <Rating tag={Number(star) || 0} />
-          </div>
+              <div className="divider" />
+              <hr className="mobile-divider" />
 
-          <div className="divider" />
-          <hr className="hori" />
-
-          <div className="amount-container">
-            <p className="amount">{formatAmount(amount || 0)}</p>
-            <p className="bank-details">
-              {acount}/{bank}
-            </p>
-          </div>
+              <div className="amount-container">
+                <p className="amount">{formatAmount(user.amount || 0)}</p>
+                <p className="bank-details">
+                  {user.acount}/{user.bank}
+                </p>
+              </div>
+            </>
+          )}
         </div>
+
+        {user && (
+          <>
+            <div className="tab">
+              <Tabs
+                tabs={[
+                  { id: "general", label: "General Details" },
+                  { id: "documents", label: "Documents" },
+                  { id: "bank", label: "Bank Details" },
+                  { id: "loans", label: "Loans" },
+                  { id: "savings", label: "Savings" },
+                  { id: "app", label: "App and System" },
+                ]}
+                defaultTab="general"
+                onTabChange={(tabId) => setActiveTab(tabId)}
+              />
+            </div>
+
+            <div className="tab-content">
+              {activeTab === "general" && <GeneralDetails user={user} />}
+              {activeTab !== "general" && <NoContent />}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
