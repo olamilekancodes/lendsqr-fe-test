@@ -1,4 +1,3 @@
-
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 
@@ -23,7 +22,7 @@ const UserDetails = () => {
 
   return (
     <div className="user-details-container">
-      <EnhancedPageTitle title="User Details" backlinkTitle="users">
+      <EnhancedPageTitle title="User Details" backlinkTitle="Users">
         <div className="user-button">
           <StyledButton title="blacklist user" color="#de325d" />
           <StyledButton title="activate user" color="#39cdcc" />

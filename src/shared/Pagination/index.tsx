@@ -53,7 +53,7 @@ export const CustomPagination = ({
   return (
     <div className="pagination-container">
       <div className="pagination-info">
-        <span>Showing</span>
+        <span className="pagination-text">Showing</span>
         <select
           className="items-dropdown"
           value={items_per_page}
@@ -65,7 +65,7 @@ export const CustomPagination = ({
             </option>
           ))}
         </select>
-        <span>results</span>
+        <span className="pagination-text">results</span>
       </div>
 
       <div className="pagination-controls">

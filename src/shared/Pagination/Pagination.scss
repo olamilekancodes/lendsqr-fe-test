@@ -14,9 +14,14 @@
     font-size: 0.875rem;
     gap: 0.5rem;
 
-    span {
+    .pagination-text {
       font-weight: 400;
       color: var.$text-color;
+      display: none;
+
+      @include mixin.respond(md) {
+        display: flex;
+      }
     }
 
     .items-dropdown {

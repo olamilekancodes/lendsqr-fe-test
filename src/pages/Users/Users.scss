@@ -37,6 +37,11 @@
   color: var.$primary-color;
   font-weight: 600;
   @include mixin.fluid-text(1.5rem, 1.25rem);
+  align-self: center;
+
+  @include mixin.respond(sm) {
+    align-self: flex-start;
+  }
 }
 
 .menu-item-content {

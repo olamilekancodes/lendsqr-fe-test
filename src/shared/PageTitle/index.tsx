@@ -34,7 +34,7 @@ export const EnhancedPageTitle = ({
         onClick={() => navigate(`/${backlinkTitle.toLowerCase()}`)}
       >
         <MoveLeft size={20} />
-        Bact to {title}
+        Bact to {backlinkTitle}
       </p>
 
       <PageTitle title={title} children={children} />

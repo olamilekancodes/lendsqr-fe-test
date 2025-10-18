@@ -27,17 +27,22 @@
   @include mixin.respond(md) {
     align-items: start;
   }
-}
 
-.info-card-title {
-  text-transform: uppercase;
-  color: var.$text-color;
-  @include mixin.fluid-text(1.25rem, 1rem);
-  font-weight: 500;
-}
+  .card-title {
+    text-transform: uppercase;
+    color: var.$text-color;
+    @include mixin.fluid-text(1.25rem, 1rem);
+    font-weight: 500;
+  }
 
-.info-card-number {
-  color: var.$primary-color;
-  font-weight: 600;
-  @include mixin.fluid-text(1.8rem, 1.5rem);
+  .card-number {
+    align-self: center;
+    color: var.$primary-color;
+    font-weight: 600;
+    @include mixin.fluid-text(1.8rem, 1.5rem);
+
+    @include mixin.respond(md) {
+      align-self: start;
+    }
+  }
 }

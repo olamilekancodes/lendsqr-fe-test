@@ -1,7 +1,7 @@
-import activeUser from ".././assets/icons/user/active-user.png";
-import user from ".././assets/icons/user/users.png";
-import userLoan from ".././assets/icons/user/users-loan.png";
-import userSavings from ".././assets/icons/user/users-loan.png";
+import activeUser from "../assets/icons/user/active-user.png";
+import user from "../assets/icons/user/users.png";
+import userLoan from "../assets/icons/user/users-loan.png";
+import userSavings from "../assets/icons/user/user-savings.png";
 
 const cardContents = [
   {
