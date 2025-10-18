@@ -1,0 +1,212 @@
+@use "sass:color";
+@use "../../styles/variables" as var;
+@use "../../styles/_mixins.scss" as mixin;
+
+.auth-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+}
+
+.left {
+  display: none;
+
+  @include mixin.respond(md) {
+    flex-basis: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    height: 100%;
+    padding: 1.5rem;
+    background-color: #f9fafb;
+
+    .left-sub-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+
+      &:first-child {
+        max-width: 120px;
+      }
+
+      &:last-child {
+        max-width: 350px;
+      }
+    }
+
+    .logo {
+      align-self: flex-start;
+      margin-left: 2rem;
+    }
+  }
+
+  @include mixin.respond(lg) {
+    flex-basis: 45%;
+    gap: 4rem;
+    padding: 2rem;
+
+    img {
+      &:first-child {
+        max-width: 170px;
+      }
+
+      &:last-child {
+        max-width: 500px;
+      }
+    }
+  }
+
+  @include mixin.respond(xl) {
+    flex-basis: 50%;
+    gap: 5rem;
+
+    img {
+      &:first-child {
+        max-width: 200px;
+      }
+
+      &:last-child {
+        max-width: 600px;
+      }
+    }
+  }
+}
+
+.right {
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+
+  @include mixin.respond(md) {
+    flex-basis: 65%;
+  }
+
+  @include mixin.respond(lg) {
+    flex-basis: 55%;
+  }
+
+  @include mixin.respond(xl) {
+    flex-basis: 50%;
+  }
+
+  .right-logo {
+    position: absolute;
+    top: 5rem;
+    left: 3rem;
+    display: block;
+
+    @include mixin.respond(md) {
+      display: none;
+    }
+  }
+
+  .right-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 18rem;
+
+    @include mixin.respond(md) {
+      width: 20rem;
+    }
+
+    @include mixin.respond(lg) {
+      width: 22rem;
+    }
+
+    .header-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-bottom: 2.5rem;
+
+      .header {
+        font-weight: 700;
+        @include mixin.fluid-text(2.5rem, 2.25rem);
+        color: var.$primary-color;
+      }
+
+      .sub-header {
+        font-weight: 400;
+        @include mixin.fluid-text(1.2rem, 1rem);
+        color: var.$text-color;
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+
+      .field {
+        width: 100%;
+        padding: 0.7rem;
+        border-radius: 3px;
+        border: 1px solid color.adjust(var.$text-color, $lightness: 30%);
+        background-color: transparent;
+        color: var.$text-color;
+        caret-color: var.$text-color;
+        outline: none;
+        transition: border-color 0.2s ease;
+        font-weight: 400;
+        @include mixin.fluid-text(0.87rem, 0.75rem);
+
+        &:focus {
+          border-color: color.adjust(var.$text-color, $lightness: 5%);
+        }
+
+        &::placeholder {
+          color: color.adjust(var.$text-color, $lightness: 20%);
+        }
+      }
+
+      .forgot-password {
+        color: var.$secondary-color;
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.2s ease;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+
+        &:hover {
+          color: color.adjust(var.$secondary-color, $lightness: -10%);
+        }
+      }
+
+      .submit {
+        padding: 0.7rem 0;
+        border-radius: 5px;
+        background-color: var.$secondary-color;
+        color: #fff;
+        text-transform: uppercase;
+        border: none;
+        @include mixin.fluid-text(0.87rem, 0.75rem);
+        font-weight: 600;
+
+        &:hover {
+          background-color: color.adjust(
+            var.$secondary-color,
+            $lightness: -10%
+          );
+        }
+      }
+    }
+  }
+}

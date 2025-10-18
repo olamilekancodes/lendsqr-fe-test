@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { useAuth } from "../../auth/useAuth";
+import banner from "../../assets/images/banner.png";
+import logo from "../../assets/images/logo.png";
+
+import "./Auth.scss";
 
 const SignIn = () => {
   const { login } = useAuth();
@@ -21,30 +26,50 @@ const SignIn = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "100px" }}>
-      <h2>Login</h2>
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "inline-block", textAlign: "left" }}
-      >
-        <div>
-          <label>Username:</label>
-          <input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+    <div className="auth-container">
+      <div className="left">
+        <div className="left-sub-wrapper">
+          <img src={logo} alt="logo" className="logo" />
+          <img src={banner} alt="Sign in banner" />
         </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+      </div>
+      <div className="right">
+        <div className="right-wrapper">
+          <div className="right-logo">
+            <img src={logo} alt="logo" />
+          </div>
+
+          <div className="header-wrapper">
+            <h1 className="header">Welcome!</h1>
+            <p className="sub-header">Enter details of login</p>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <input
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              type="email"
+              placeholder="Email"
+              className="field"
+            />
+
+            <input
+              className="field"
+              placeholder="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <p className="forgot-password">Forgot password?</p>
+
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            <button type="submit" className="submit">
+              Log in
+            </button>
+          </form>
         </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Login</button>
-      </form>
+      </div>
     </div>
   );
 };
