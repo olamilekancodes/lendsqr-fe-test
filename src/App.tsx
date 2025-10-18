@@ -7,6 +7,7 @@ import SignIn from "./pages/Auth";
 import { AuthProvider } from "./auth/AuthProvider";
 import PublicRoute from "./components/Routes/PublicRoute";
 import ProtectedRoute from "./components/Routes/ProtectedRoute";
+import ComingSoon from "./pages/ComingSoon";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
           { path: "dashboard", element: <Dashboard /> },
           { path: "users", element: <Users /> },
           { path: "users/:id", element: <UserDetails /> },
+          { path: "*", element: <ComingSoon /> },
         ],
       },
     ],

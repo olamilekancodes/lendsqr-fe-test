@@ -1,0 +1,17 @@
+@use "../../styles/variables" as var;
+@use "sass:color";
+@use "../../styles/_mixins.scss" as mixin;
+
+.coming-soon-container {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  color: color.adjust(var.$text-color, $lightness: 30%);
+  gap: 1rem;
+  margin: 10rem 0;
+}
+
+.coming-soon-container h3 {
+  @include mixin.fluid-text(2rem, 1.5rem);
+}
