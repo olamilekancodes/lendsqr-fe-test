@@ -1,4 +1,3 @@
-import "./Topbar.scss";
 import { Search } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { Menu } from "lucide-react";
@@ -8,6 +7,7 @@ import { LiaBell } from "react-icons/lia";
 import logo from "../../assets/images/logo.png";
 import mobileLogo from "../../assets/images/mobile-logo.png";
 import Avatar from "../../shared/Avatar";
+import "./TopBar.scss";
 
 interface TopbarProps {
   setOpenMobileNav: (open: boolean) => void;
@@ -43,7 +43,6 @@ const Topbar = ({ setOpenMobileNav }: TopbarProps) => {
         <div className="avatar-container">
           <Avatar name="Jane Smith" size={40} />
           <p>Jane</p>
-          {/* <img src={downArrow} alt="arrow icon" /> */}
           <TiArrowSortedDown size={20} />
         </div>
       </div>
